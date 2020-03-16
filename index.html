@@ -53,12 +53,11 @@
     });
     var borat = new Tone.Player({
        "retrigger" : true
-    });
-             
+    });        
     
     slap.load( "slap.mp3" );
-    borat.load( "borat.mp3" );    
     slap.connect(Tone.Master);
+    borat.load( "borat.mp3" ); 
     borat.connect(Tone.Master);
 
     function mouseActions(event) {
