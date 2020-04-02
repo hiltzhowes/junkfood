@@ -69,7 +69,7 @@ Nexus.colors.accent = "red";
 
 var control1 = new Nexus.Dial("#control1");
 control1.on("change", function(nexusData){
-    //lfo.frequency.value = nexusData * 10 + 1;
+    lfo.frequency.value = nexusData * 10 + 1;
         
     greenAmount = Math.round(255 * nexusData);
     defaultColor = "rgb(" +
@@ -81,10 +81,20 @@ control1.on("change", function(nexusData){
 });
  
 var control2 = new Nexus.Dial("#control2");
-control1.on("change", function(nexusData){
-    lfo.frequency.value = nexusData * 10 + 1;
+control2.on("change", function(nexusData){
+    //lfo.frequency.value = nexusData * 10 + 1;
+    if (nexusData < 0.3333) {
+        osc.type = "square";
+    }
+    else if (0.3333 < nexusData < 0.6666) {
+        osc.type = "sawtooth";
+    }
+    else
+    {
+        osc.type = "triangle";
+    }
         
-    greenAmount = Math.round(255 * nexusData);
+    redAmount = Math.round(255 * nexusData);
     defaultColor = "rgb(" +
     redAmount + ',' +
     greenAmount + ',' +
