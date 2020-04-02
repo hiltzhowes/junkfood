@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
  
-<script src="js/unmute-v013.js" data-add-button="true"></script>
-<script src="js/tone-v13.js" ></script>
-<script src="js/nexusUI-v2.js"></script>
-    
-<title>high test</title>
+<script src="unmute-v013.js" data-add-button="true"></script>
+<script src="tone-v13.js" ></script>
+<script src="nexusUI-v2.js"></script>
  
 <body>
 
 <h1>DOM touchend Event</h1>
 
-<button ontouchstart = "touchstart()" ontouchend = "touchend()">Babba rester plan til 94 on a long john wavey welly</button>
+<button ontouchstart = "touchstart()" ontouchend = "touchend()">Touch this button m8.</button>
 
 <p><strong>Note:</strong> This example is for touch devices only.</p>
 
@@ -19,18 +17,15 @@
 
 <script>
 
-var osc = new Tone.Oscillator(220, "square").toMaster();
-var lfo = new Tone.LFO(8.5, 220, 280).start();
-lfo.phase.value = 0.2;
-lfo.connect(osc.frequency);
+var osc = new Tone.Oscillator(440, "sine").toMaster();
  
 function touchstart() {
-  document.getElementById("demo").innerHTML = "pressin";
+  document.getElementById("demo").innerHTML = "pressed and sounding";
   osc.start();
 }
  
 function touchend() {
-  document.getElementById("demo").innerHTML = "letting go";
+  document.getElementById("demo").innerHTML = "lifted and ended";
   osc.stop();
 }
 </script>
