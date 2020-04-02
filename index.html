@@ -40,6 +40,7 @@
  
 <div id="oscPanel">
     <div nx="dial" id="control1">Wave</div>
+    <div nx="dial" id="control2">Wave</div>
 </div>
 
 <button id="daButton" class="button" ontouchstart = "touchstart()" ontouchend = "touchend()">brudda bear could get quite a scare with an apple</button>
@@ -47,9 +48,6 @@
 
 <script>
  
-Nexus.colors.fill = "black";
-Nexus.colors.accent = "red";
-var control1 = new Nexus.Dial("#control1");
 var daButton = document.getElementById("daButton");
 
 var osc = new Tone.Oscillator(220, "square").toMaster();
@@ -65,7 +63,10 @@ var defaultColor = "rgb(" +
 redAmount + ',' +
 greenAmount + ',' +
 blueAmount + ')';
- 
+
+Nexus.colors.fill = "black";
+Nexus.colors.accent = "red";
+var control1 = new Nexus.Dial("#control1");
 control1.on("change", function(nexusData){
     lfo.frequency.value = nexusData * 10 + 1;
         
