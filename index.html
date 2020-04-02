@@ -7,6 +7,15 @@
  
 <title>steppeers</title>
  
+<div id="oscPanel">
+    <div nx="dial" id="control1"></div>
+    <div nx="dial" id="control2"></div>
+</div>
+ 
+<button id="daButton" class="button" ontouchstart = "touchstart()" ontouchend = "touchend()"></button>
+
+<canvas nx="button"></canvas>
+ 
 <style>
          #oscPanel div[nx="dial"] {
             width: 100%; /* three controls spread across full width */
@@ -38,17 +47,12 @@
 </head>
 <body>
  
-<div id="oscPanel">
-    <div nx="dial" id="control1"></div>
-    <div nx="dial" id="control2"></div>
-</div>
- 
-<button id="daButton" class="button" ontouchstart = "touchstart()" ontouchend = "touchend()"></button>
-
-<canvas nx="button"></canvas>
 
 
 <script>
+nx.onload = function() {
+    button1.on('*', buttonPress);
+}
  
 var daButton = document.getElementById("daButton");
 /*
