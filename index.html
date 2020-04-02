@@ -16,8 +16,12 @@
 <p id="demo"></p>
 
 <script>
+
+var osc = new Tone.Oscillator(440, "sine").toMaster();
+ 
 function myFunction() {
   document.getElementById("demo").innerHTML = "Hello World";
+  osc.start();
 }
 </script>
 
