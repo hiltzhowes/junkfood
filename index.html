@@ -42,7 +42,8 @@
     <div nx="dial" id="control1"></div>
     <div nx="dial" id="control2"></div>
 </div>
-
+ 
+<canvas nx="button"></canvas>
 <button id="daButton" class="button" ontouchstart = "touchstart()" ontouchend = "touchend()"></button>
 
 
@@ -115,12 +116,16 @@ control2.on("change", function(nexusData){
  
  
 function touchstart() {
-  osc.start();
+   osc.start();
 }
  
 function touchend() {
-  osc.stop();
+   osc.stop();
 }
+ 
+button1.on('*', function(data) {
+   console.log(data.press);
+});
 </script>
 
 </body>
