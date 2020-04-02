@@ -44,7 +44,7 @@
     <div nx="dial" id="control1">Wave</div>
 </div>
 
-<button ontouchstart = "touchstart()" ontouchend = "touchend()">rollback ralph</button>
+<button id="daButton" ontouchstart = "touchstart()" ontouchend = "touchend()">rollback ralph</button>
 
 <p><strong>Note:</strong> This example is for touch devices only.</p>
 
@@ -63,12 +63,12 @@ lfo.phase.value = 0.2;
 lfo.connect(osc.frequency);
  
 function touchstart() {
-  document.getElementById("demo").innerHTML = "pressed and sounding";
+  document.getElementById("daButton").innerHTML = "pressed and sounding";
   osc.start();
 }
  
 function touchend() {
-  document.getElementById("demo").innerHTML = "lifted and ended";
+  document.getElementById("daButton").innerHTML = "lifted and ended";
   osc.stop();
 }
 </script>
