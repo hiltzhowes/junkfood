@@ -48,8 +48,13 @@
 
 <script>
  
-var daButton = document.getElementById("daButton");
-
+//var daButton = document.getElementById("daButton");
+var button = new Nexus.Button('#button',{
+  'size': [80,80],
+  'mode': 'button',
+  'state': false
+})
+ 
 var osc = new Tone.Oscillator(220, "square").toMaster();
 var lfo = new Tone.LFO(8.5, 220, 280).start();
 lfo.phase.value = 0.2;
