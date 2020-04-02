@@ -13,19 +13,28 @@
 <body>
 
 <h1>DOM touchend Event</h1>
+ 
+<div id="oscPanel">
+    <div nx="dial" id="control1">Wave</div>
+</div>
 
-<button ontouchstart = "touchstart()" ontouchend = "touchend()">oh tracey you know its not double</button>
+<button ontouchstart = "touchstart()" ontouchend = "touchend()">once you get here share the big cheer</button>
 
 <p><strong>Note:</strong> This example is for touch devices only.</p>
 
 <p id="demo"></p>
 
 <script>
+ 
+Nexus.colors.fill = "black";
+Nexus.colors.accent = "red";
+var control1 = new Nexus.Dial("#control1");
+var daButton = document.getElementById("daButton");
 
 var osc = new Tone.Oscillator(220, "square").toMaster();
-    var lfo = new Tone.LFO(8.5, 220, 280).start();
-    lfo.phase.value = 0.2;
-    lfo.connect(osc.frequency);
+var lfo = new Tone.LFO(8.5, 220, 280).start();
+lfo.phase.value = 0.2;
+lfo.connect(osc.frequency);
  
 function touchstart() {
   document.getElementById("demo").innerHTML = "pressed and sounding";
