@@ -44,9 +44,9 @@
 </div>
  
 <button id="daButton" class="button" ontouchstart = "touchstart()" ontouchend = "touchend()"></button>
-<!--
+
 <canvas nx="button"></canvas>
--->
+
 
 <script>
  
@@ -78,7 +78,7 @@ Nexus.colors.accent = "red";
 
 var control1 = new Nexus.Dial("#control1");
 var control2 = new Nexus.Dial("#control2");
-var control3 = new Nexus.Button("#button1");
+//var button1 = new Nexus.Button("#button1");
  
 control1.on("change", function(nexusData){
     var lfoRate = nexusData * 10 + 1
