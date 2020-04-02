@@ -44,7 +44,7 @@
     <div nx="dial" id="control1">Wave</div>
 </div>
 
-<button id="daButton" ontouchstart = "touchstart()" ontouchend = "touchend()">got to get down</button>
+<button id="daButton" ontouchstart = "touchstart()" ontouchend = "touchend()">we've been jibbed</button>
 
 <p><strong>Note:</strong> This example is for touch devices only.</p>
 
@@ -70,6 +70,18 @@ var defaultColor = "rgb(" +
 redAmount + ',' +
 greenAmount + ',' +
 blueAmount + ')';
+ 
+control1.on("change", function(nexusData){
+    lfo.frequency.value = nexusData * 10 + 1;
+        
+    greenAmount = Math.round(255 * nexusData);
+    defaultColor = "rgb(" +
+    redAmount + ',' +
+    greenAmount + ',' +
+    blueAmount + ')';
+        
+    //daButton.style.backgroundColor = defaultColor;
+});
  
 function touchstart() {
   document.getElementById("daButton").innerHTML = "pressed and sounding";
