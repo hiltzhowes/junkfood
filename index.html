@@ -44,7 +44,7 @@
     <div nx="dial" id="control1">Wave</div>
 </div>
 
-<button id="daButton" ontouchstart = "touchstart()" ontouchend = "touchend()">batinmans clef</button>
+<button id="daButton" ontouchstart = "touchstart()" ontouchend = "touchend()">got to get down</button>
 
 <p><strong>Note:</strong> This example is for touch devices only.</p>
 
@@ -61,6 +61,15 @@ var osc = new Tone.Oscillator(220, "square").toMaster();
 var lfo = new Tone.LFO(8.5, 220, 280).start();
 lfo.phase.value = 0.2;
 lfo.connect(osc.frequency);
+ 
+var redAmount = 100;
+var greenAmount = 100;
+var blueAmount = 200;
+    
+var defaultColor = "rgb(" +
+redAmount + ',' +
+greenAmount + ',' +
+blueAmount + ')';
  
 function touchstart() {
   document.getElementById("daButton").innerHTML = "pressed and sounding";
