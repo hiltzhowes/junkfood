@@ -9,7 +9,7 @@
 
 <h1>DOM touchend Event</h1>
 
-<button ontouchstart = "touchstart()" ontouchend = "touchend()">Touch this button m8.</button>
+<button ontouchstart = "touchstart()" ontouchend = "touchend()">Severus snapey can be a snake.</button>
 
 <p><strong>Note:</strong> This example is for touch devices only.</p>
 
@@ -17,7 +17,10 @@
 
 <script>
 
-var osc = new Tone.Oscillator(440, "sine").toMaster();
+var osc = new Tone.Oscillator(220, "square").toMaster();
+    var lfo = new Tone.LFO(8.5, 220, 280).start();
+    lfo.phase.value = 0.2;
+    lfo.connect(osc.frequency);
  
 function touchstart() {
   document.getElementById("demo").innerHTML = "pressed and sounding";
