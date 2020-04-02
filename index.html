@@ -20,12 +20,12 @@
 var osc = new Tone.Oscillator(440, "sine").toMaster();
  
 function touchstart() {
-  document.getElementById("demo").innerHTML = "sound";
+  document.getElementById("demo").innerHTML = "pressed and sounding";
   osc.start();
 }
  
 function touchend() {
-  document.getElementById("demo").innerHTML = "end";
+  document.getElementById("demo").innerHTML = "lifted and ended";
   osc.stop();
 }
 </script>
