@@ -44,27 +44,24 @@
 </div>
  
 <canvas nx="button"></canvas>
+<button id="daButton" class="button" ontouchstart = "touchstart()" ontouchend = "touchend()"></button>
 
 
 <script>
  
-nx.onload = function() {
-    button1.on('*', buttonPress);
-}
+var daButton = document.getElementById("daButton");
+/*
+ var button = new Nexus.Button('#button',{
+  'size': [80,80],
+  'mode': 'button',
+  'state': false
+})
+*/
  
 var osc = new Tone.Oscillator(220, "square").toMaster();
 var lfo = new Tone.LFO(8.5, 220, 280).start();
 lfo.phase.value = 0.2;
 lfo.connect(osc.frequency);
- 
-var buttonPress = function(data) {
-    if (data.press == 1) {
-        osc.start();
-    }
-    else if (data.press == 0) {
-        osc.stop();
-    }
-}
  
 var redAmount = 100;
 var greenAmount = 100;
@@ -115,6 +112,19 @@ control2.on("change", function(nexusData){
     blueAmount + ')';
         
     daButton.style.backgroundColor = defaultColor;
+});
+ 
+ 
+function touchstart() {
+   osc.start();
+}
+ 
+function touchend() {
+   osc.stop();
+}
+ 
+button1.on('*', function(data) {
+   console.log(data.press);
 });
 </script>
 
