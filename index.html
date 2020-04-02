@@ -66,6 +66,7 @@ blueAmount + ')';
 
 Nexus.colors.fill = "black";
 Nexus.colors.accent = "red";
+ 
 var control1 = new Nexus.Dial("#control1");
 control1.on("change", function(nexusData){
     lfo.frequency.value = nexusData * 10 + 1;
@@ -78,6 +79,21 @@ control1.on("change", function(nexusData){
         
     daButton.style.backgroundColor = defaultColor;
 });
+ 
+var control2 = new Nexus.Dial("#control2");
+control1.on("change", function(nexusData){
+    lfo.frequency.value = nexusData * 10 + 1;
+        
+    redAmount = Math.round(255 * nexusData);
+    defaultColor = "rgb(" +
+    redAmount + ',' +
+    greenAmount + ',' +
+    blueAmount + ')';
+        
+    daButton.style.backgroundColor = defaultColor;
+});
+ 
+
  
 function touchstart() {
   //document.getElementById("daButton").innerHTML = "pressed and sounding";
