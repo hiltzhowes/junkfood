@@ -26,12 +26,12 @@
             background-color: #6400c8;
             border: none;
             color: white;
-            padding: 15px 32px;
+            padding: 45px 62px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            margin: 4px 2px;
+            margin: 9px 12px;
             cursor: pointer;
         }
 </style>
@@ -43,7 +43,7 @@
     <div nx="dial" id="control2">Wave</div>
 </div>
 
-<button id="daButton" class="button" ontouchstart = "touchstart()" ontouchend = "touchend()">brudda bear could get quite a scare with an apple</button>
+<button id="daButton" class="button" ontouchstart = "touchstart()" ontouchend = "touchend()"></button>
 
 
 <script>
@@ -80,12 +80,12 @@ control1.on("change", function(nexusData){
 });
  
 function touchstart() {
-  document.getElementById("daButton").innerHTML = "pressed and sounding";
+  //document.getElementById("daButton").innerHTML = "pressed and sounding";
   osc.start();
 }
  
 function touchend() {
-  document.getElementById("daButton").innerHTML = "lifted and ended";
+  //document.getElementById("daButton").innerHTML = "lifted and ended";
   osc.stop();
 }
 </script>
