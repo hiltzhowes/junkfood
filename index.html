@@ -1,134 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="unmute-v013.js" data-add-button="true"></script>
-<script src="tone-v13.js" ></script>
-<script src="nexusUI-v2.js"></script>
- 
-<title>steppeers</title>
- 
+    <script src="js/unmute-v013.js" data-add-button="true"></script>
+    <script src="js/tone-v13.js" ></script>
+    <script src="js/nexusUI-v2.js"></script>
+    <script src="js/nexusUI-v1.js"></script>
+
+
+<title>Testing Bleeps</title>
+  
 <style>
-         #oscPanel div[nx="dial"] {
-            width: 100%; /* three controls spread across full width */
-            height: 100%;
-            display: inline;
-        }
-        div#oscPanel {
-            width: 100%; /* two panels spread over the full width */
-            height: 100%;
-            float: left;
-            border-radius: 3px;
-            background-color : rgb(220,230,30);
-            
-            text-align: center;
-        }
-        .button {
-            background-color: #6400c8;
-            border: none;
-            color: white;
-            padding: 45px 62px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 9px 12px;
-            cursor: pointer;
+    #oscPanel div[nx="dial"] {
+        width: 100%; /* three controls spread across full width */
+        height: 100%;
+        display: inline;
+    }
+    div#oscPanel {
+        width: 100%; /* two panels spread over the full width */
+        height: 100%;
+        float: left;
+        border-radius: 3px;
+        background-color : rgb(220,230,30);
+    
+        text-align: center;
+    }
+    .centred {
+        /* a css class definition to centre an item */
+        position: fixed;
+        top: 66%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
         }
 </style>
-</head>
-<body>
 
 <div id="oscPanel">
     <div nx="dial" id="control1"></div>
     <div nx="dial" id="control2"></div>
 </div>
  
-<button id="daButton" class="button" ontouchstart = "touchstart()" ontouchend = "touchend()"></button>
-
-<canvas nx="button"></canvas>
-
-
-<script>
-nx.onload = function() {
-    button1.on('*', buttonPress);
-}
- 
-var daButton = document.getElementById("daButton");
-/*
- var button = new Nexus.Button('#button',{
-  'size': [80,80],
-  'mode': 'button',
-  'state': false
-})
-*/
- 
-var osc = new Tone.Oscillator(220, "square").toMaster();
-var lfo = new Tone.LFO(8.5, 220, 280).start();
-lfo.phase.value = 0.2;
-lfo.connect(osc.frequency);
- 
-var redAmount = 100;
-var greenAmount = 100;
-var blueAmount = 200;
+<div class="centred">
+    <canvas nx="button" id="button"></canvas>
+</div>
+  
+</head>
+<body>
     
-var defaultColor = "rgb(" +
-redAmount + ',' +
-greenAmount + ',' +
-blueAmount + ')';
-
-Nexus.colors.fill = "black";
-Nexus.colors.accent = "red";
-
-var control1 = new Nexus.Dial("#control1");
-var control2 = new Nexus.Dial("#control2");
-//var button1 = new Nexus.Button("#button1");
- 
-control1.on("change", function(nexusData){
-    var lfoRate = nexusData * 10 + 1
-    lfo.frequency.value = lfoRate;
-    control1.innerHTML = lfoRate; 
-        
-    greenAmount = Math.round(255 * nexusData);
-    defaultColor = "rgb(" +
-    redAmount + ',' +
-    greenAmount + ',' +
-    blueAmount + ')';
-        
-    daButton.style.backgroundColor = defaultColor;
-});
-
-control2.on("change", function(nexusData){
-    //lfo.frequency.value = nexusData * 10 + 1;
-    if (nexusData < 0.3333) {
-        osc.type = "square";
+<script>
+    nx.onload = function() {
+        button.on('*', buttonPress);
     }
-    else if (0.3333 < nexusData < 0.6666) {
-        osc.type = "sawtooth";
+
+    var control1 = new Nexus.Dial("#control1");
+    var control2 = new Nexus.Dial("#control2");
+
+    var button = document.getElementById("button");
+    button.width = window.innerWidth;
+    button.height = window.innerHeight;
+    
+    var buttonPress = function(data) {
+        console.log(data.press);
+        if (data.press == 1) {
+            console.log("gay rights");
+        }
+        else if (data.press == 0) {
+            console.log("bender!");
+        }
     }
-    else
-    {
-        osc.type = "triangle";   
-    }
-        
-    redAmount = Math.round(255 * nexusData);
-    defaultColor = "rgb(" +
-    redAmount + ',' +
-    greenAmount + ',' +
-    blueAmount + ')';
-        
-    daButton.style.backgroundColor = defaultColor;
-});
- 
- 
-function touchstart() {
-   osc.start();
-}
- 
-function touchend() {
-   osc.stop();
-}
 
 </script>
-
 </body>
 </html>
