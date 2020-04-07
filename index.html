@@ -1,65 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="unmute-v013.js" data-add-button="true"></script>
-    <script src="tone-v13.js" ></script>
-    <script src="nexusUI-v2.js"></script>
-    <script src="nexusUI-v1.js"></script>
-
-
-<title>Testing Bleeps</title>
-  
-<style>
-    .centred {
-        /* a css class definition to centre an item */
-        position: fixed;
-        top: 66%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        }
-</style>
- 
-<div class="centred">
-    <canvas nx="button" id="button">Ready</canvas>
-</div>
-  
-</head>
-<body>
+    <script src="js/unmute-v013.js" data-add-button="true"></script>
+    <script src="js/tone-v13.js" ></script>
+    <script src="js/nexusUI-v1.js"></script>
+    <script src="js/nexusUI-v2.js"></script>
     
+    <title>Fresh Jay</title>
+    
+    <style>
+        #oscPanel div[nx="dial"] {
+            width: 100%; /* three controls spread across full width */
+            height: 100%;
+            display: inline;
+        }
+        div#oscPanel {
+            width: 100%; /* two panels spread over the full width */
+            height: 100%;
+            float: left;
+            border-radius: 3px;
+            background-color : rgb(220,230,30);
+            
+            text-align: center;
+        }
+        .button {
+            background-color: #6400c8;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body id="mainBody" width="100%" height="100%">
+
+<canvas nx="button" id="button" width="500" height="500"></canvas>
+
+
+
+
 <script>
+    button.resize(100,100);
+    
     nx.onload = function() {
         button.on('*', buttonPress);
     }
+    
     var tick1 = new Tone.MembraneSynth({
-        pitchDecay : 0.05 ,
-        octaves : 10 ,
-        oscillator : {
-        type : "sawtooth"
-        } ,
-        envelope : {
-            attack : 0.001 ,
-            decay : 0.02 ,
-            sustain : 0.0 ,
-            release : 0.03 ,
-            attackCurve : "linear"
-            }
+       pitchDecay : 0.05 ,
+       octaves : 10 ,
+       oscillator : {
+       type : "sawtooth"
+       } ,
+       envelope : {
+       attack : 0.001 ,
+       decay : 0.02 ,
+       sustain : 0.0 ,
+       release : 0.03 ,
+       attackCurve : "linear"
+       }
     }).toMaster();
-
-    var button = document.getElementById("button");
-    button.width = window.innerWidth;
-    button.height = window.innerHeight;
     
     var buttonPress = function(data) {
-        console.log(data.press);
         if (data.press == 1) {
             tick1.triggerAttackRelease("E4", "8n");
+            console.log("LOOL!@")
         }
         else if (data.press == 0) {
-            
         }
     }
-
 </script>
 </body>
 </html>
