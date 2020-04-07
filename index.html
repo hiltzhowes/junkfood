@@ -10,20 +10,6 @@
 <title>Testing Bleeps</title>
   
 <style>
-    #oscPanel div[nx="dial"] {
-        width: 100%; /* three controls spread across full width */
-        height: 100%;
-        display: inline;
-    }
-    div#oscPanel {
-        width: 100%; /* two panels spread over the full width */
-        height: 100%;
-        float: left;
-        border-radius: 3px;
-        background-color : rgb(220,230,30);
-    
-        text-align: center;
-    }
     .centred {
         /* a css class definition to centre an item */
         position: fixed;
@@ -50,9 +36,20 @@
     nx.onload = function() {
         button.on('*', buttonPress);
     }
-
-    var control1 = new Nexus.Dial("#control1");
-    var control2 = new Nexus.Dial("#control2");
+    var tick1 = new Tone.MembraneSynth({
+        pitchDecay : 0.05 ,
+        octaves : 10 ,
+        oscillator : {
+        type : "sawtooth"
+        } ,
+        envelope : {
+            attack : 0.001 ,
+            decay : 0.02 ,
+            sustain : 0.0 ,
+            release : 0.03 ,
+            attackCurve : "linear"
+            }
+    }).toMaster();
 
     var button = document.getElementById("button");
     button.width = window.innerWidth;
@@ -61,10 +58,10 @@
     var buttonPress = function(data) {
         console.log(data.press);
         if (data.press == 1) {
-            console.log("gay rights");
+            tick1.triggerAttackRelease("E4", "8n");
         }
         else if (data.press == 0) {
-            console.log("bender!");
+            
         }
     }
 
