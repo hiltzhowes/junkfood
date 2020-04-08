@@ -45,30 +45,15 @@
 
 
 <script>
+    var testOsc = new Tone.Oscillator(440, "sine").toMaster()
     
     nx.onload = function() {
         button.on('*', buttonPress);
     }
     
-    var tick1 = new Tone.MembraneSynth({
-       pitchDecay : 0.05 ,
-       octaves : 10 ,
-       oscillator : {
-       type : "sawtooth"
-       } ,
-       envelope : {
-       attack : 0.001 ,
-       decay : 0.02 ,
-       sustain : 0.0 ,
-       release : 0.03 ,
-       attackCurve : "linear"
-       }
-    }).toMaster();
-    
     var buttonPress = function(data) {
         if (data.press == 1) {
-            tick1.triggerAttackRelease("E4", "8n");
-            console.log("Button Press")
+            testOsc.start();
         }
         else if (data.press == 0) {
         }
